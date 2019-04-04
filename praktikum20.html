@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Praktikum 2 : Event Mouse</title>
+    <script type="text/javascript" src="asset/js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="asset/css/modal.css">
+</head>
+<body>
+    <center><h1>Membuat modal dialog dengan JQuery</h1></center>
+    <button id="tombol">KLIK SAYA !!</button>
+    KLIK TOMBOL UNTUK MENAMPILKAN MODAL ULANG
+    <div id="bg"></div>
+    <div id="modal-kotak">
+        <div id="atas">
+            <table>
+            <tr>
+                <td>
+                <input type="text" id="nilai1" name="nilai1" placeholder="Nilai 1"><br>
+                <input type="text" id="nilai2" name="nilai2" placeholder="nilai 2"><br><br>
+                <input type="text" id="hasil" name="hasil" placeholder="Hasil"><br>
+                </td>
+                <td>
+                <button type="button" id="tambah">+</button><br>
+                <button type="button" id="kurangi">-</button><br>
+                <button type="button" id="bagi">:</button><br>
+                <button type="button" id="kali">x</button><br>
+                </td>
+            </tr>  
+            </table>
+        </div>
+        <div id="bawah">
+            <button id="tombol-tutup">CLOSE</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#tombol').click(function(){
+                $('#modal-kotak , #bg').fadeIn("slow");
+            });
+            $('#tombol-tutup').click(function(){
+                $('#modal-kotak , #bg').fadeOut("slow");
+            });
+            
+            $("#tambah").click(function(){
+                //get value
+                var nilai1 = $("#nilai1").val();
+                var nilai2 = $("#nilai2").val();
+
+                var hasil = parseInt(nilai1) + parseInt(nilai2);
+                //set value
+                $("#hasil").val(hasil);
+            });
+
+            $("#kurangi").click(function(){
+                //get value
+                var nilai1 = $("#nilai1").val();
+                var nilai2 = $("#nilai2").val();
+
+                var hasil = parseInt(nilai1) - parseInt(nilai2);
+                //set value
+                $("#hasil").val(hasil);
+            });
+
+            $("#bagi").click(function(){
+                //get value
+                var nilai1 = $("#nilai1").val();
+                var nilai2 = $("#nilai2").val();
+
+                var hasil = parseInt(nilai1) / parseInt(nilai2);
+                //set value
+                $("#hasil").val(hasil);
+            });
+
+            $("#kali").click(function(){
+                //get value
+                var nilai1 = $("#nilai1").val();
+                var nilai2 = $("#nilai2").val();
+
+                var hasil = parseInt(nilai1) * parseInt(nilai2);
+                //set value
+                $("#hasil").val(hasil);
+            });
+
+            $('#nilai1').keyup(function() {
+                //setiap karakter yang diketik akan langsung dihapus
+                this.value = this.value.replace(/[^0-9.]/g, '');
+            });
+
+            $('#nilai2').keyup(function() {
+                //setiap karakter yang diketik akan langsung dihapus
+                this.value = this.value.replace(/[^0-9.]/g, '');
+            });
+
+            $('#hasil').keyup(function() {
+                //setiap karakter yang diketik akan langsung dihapus
+                this.value = this.value.replace(/[^0-9.]/g, '');
+            });
+        });
+
+    </script>
+</body>
+</html>
